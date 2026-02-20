@@ -4,7 +4,7 @@
 	"author": "Mooenz",
 	"displayName": "HTML Nesting Validator",
 	"description": "Valida anidamiento inválido de etiquetas HTML con sugerencias y referencias a la especificación",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"repository": {
 		"type": "git",
 		"url": "https://example.com/html-nesting-linter.git"
@@ -59,7 +59,8 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./"
+		"watch": "tsc -watch -p ./",
+		"release": "npm version patch --no-git-tag-version && npm run compile && npx vsce publish"
 	},
 	"devDependencies": {
 		"@types/node": "^25.3.0",
