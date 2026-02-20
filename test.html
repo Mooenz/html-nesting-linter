@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Documento de prueba</title>
+	</head>
+	<body>
+    <h1>Test de HTML Nesting Validator</h1>
+
+    <!-- ======================================= -->
+    <!-- ❌ Casos inválidos (deberían marcar error) -->
+    <!-- ======================================= -->
+
+    <!-- p con contenido de bloque -->
+    <p><div>contenido</div></p>
+    <p><h2>Título dentro de p</h2></p>
+
+    <!-- interactivos anidados -->
+    <a href="/home"><a href="/about">Sobre nosotros</a></a>
+    <a href="/buy"><button>Comprar</button></a>
+    <button><a href="/x">Ir</a></button>
+
+    <!-- estructura de tabla inválida -->
+    <table><div>fila</div></table>
+    <table><tbody><tr><div>celda</div></tr></tbody></table>
+
+    <!-- listas inválidas -->
+    <ul><div>item</div></ul>
+    <ol><p>item</p></ol>
+
+    <!-- formularios y labels -->
+    <form>
+      <form><input type="text" /></form>
+    </form>
+    <label><label>Texto</label></label>
+
+    <!-- select / optgroup inválidos -->
+    <select><div>no permitido</div></select>
+    <optgroup label="grupo"><span>no permitido</span></optgroup>
+
+    <!-- picture inválido -->
+    <picture><div>no permitido</div><img src="x.png" alt="x" /></picture>
+
+    <hr />
+
+    <!-- ======================================= -->
+    <!-- ✅ Casos válidos (no deberían marcar error) -->
+    <!-- ======================================= -->
+
+    <p>Texto con <strong>énfasis</strong> y <a href="#">enlace</a></p>
+
+    <div>
+      <p>Párrafo correcto</p>
+      <ul>
+        <li><span>item 1</span></li>
+        <li><div>item 2 con bloque</div></li>
+      </ul>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Nombre</th><th>Edad</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Jose</td><td>30</td></tr>
+      </tbody>
+    </table>
+
+    <form>
+      <fieldset>
+        <legend>Perfil</legend>
+        <label for="name">Nombre</label>
+        <input id="name" type="text" />
+      </fieldset>
+    </form>
+
+    <select>
+      <optgroup label="Opciones">
+        <option value="1">Uno</option>
+        <option value="2">Dos</option>
+      </optgroup>
+    </select>
+
+    <picture>
+      <source srcset="x.webp" type="image/webp" />
+      <img src="x.png" alt="Imagen" />
+    </picture>
+
+    <hr />
+
+    <!-- ======================================= -->
+    <!-- 🆕 Etiquetas nuevas o poco conocidas -->
+    <!-- ======================================= -->
+
+    <h2>Ejemplos de etiquetas menos conocidas</h2>
+
+    <section>
+      <h3>details + summary</h3>
+      <details>
+        <summary>Mostrar información</summary>
+        <p>Contenido desplegable nativo sin JavaScript.</p>
+      </details>
+    </section>
+
+    <section>
+      <h3>dialog</h3>
+      <dialog id="miDialogo">
+        <p>Hola 👋 Este es un diálogo nativo.</p>
+        <button type="button" onclick="miDialogo.close()">Cerrar</button>
+      </dialog>
+      <button type="button" onclick="miDialogo.showModal()">Abrir diálogo</button>
+    </section>
+
+    <section>
+      <h3>template</h3>
+      <template id="cardTpl">
+        <article>
+          <h4>Título de tarjeta</h4>
+          <p>Contenido dentro de template (no visible hasta clonarlo).</p>
+        </article>
+      </template>
+      <p>El contenido de <code>template</code> no se renderiza automáticamente.</p>
+    </section>
+
+    <section>
+      <h3>datalist</h3>
+      <label for="ciudad">Ciudad</label>
+      <input id="ciudad" list="ciudades" name="ciudad" />
+      <datalist id="ciudades">
+        <option value="Madrid"></option>
+        <option value="Bogotá"></option>
+        <option value="Ciudad de México"></option>
+      </datalist>
+    </section>
+
+    <section>
+      <h3>output</h3>
+      <form oninput="resultado.value = Number(a.value) + Number(b.value)">
+        <input id="a" name="a" type="number" value="2" />
+        +
+        <input id="b" name="b" type="number" value="3" />
+        =
+        <output name="resultado">5</output>
+      </form>
+    </section>
+
+    <section>
+      <h3>meter y progress</h3>
+      <p>Batería: <meter min="0" max="100" value="72">72%</meter></p>
+      <p>Progreso de carga: <progress value="45" max="100">45%</progress></p>
+    </section>
+
+    <section>
+      <h3>time, ruby y wbr</h3>
+      <p>Fecha: <time datetime="2026-02-19">19 de febrero de 2026</time></p>
+      <p>Lectura: <ruby>漢<rt>かん</rt>字<rt>じ</rt></ruby></p>
+      <p>Quiebre sugerido: hiper<wbr>conec<wbr>tividad<wbr>interna</p>
+    </section>
+  </body>
+</html>

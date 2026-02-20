@@ -1,0 +1,73 @@
+{
+	"name": "html-nesting-linter",
+	"publisher": "Mooenz",
+	"author": "Mooenz",
+	"displayName": "HTML Nesting Validator",
+	"description": "Valida anidamiento inválido de etiquetas HTML con sugerencias y referencias a la especificación",
+	"version": "0.2.2",
+	"repository": {
+		"type": "git",
+		"url": "https://example.com/html-nesting-linter.git"
+	},
+	"engines": {
+		"vscode": "^1.109.0"
+	},
+	"categories": [
+		"Linters"
+	],
+	"keywords": [
+		"html",
+		"linter",
+		"nesting",
+		"react",
+		"vue",
+		"svelte",
+		"angular"
+	],
+	"activationEvents": [
+		"onLanguage:html",
+		"onLanguage:javascriptreact",
+		"onLanguage:typescriptreact",
+		"onLanguage:vue",
+		"onLanguage:svelte",
+		"onLanguage:html-angular"
+	],
+	"main": "./out/extension.js",
+	"icon": "icon.png",
+	"contributes": {
+		"configuration": {
+			"title": "HTML Nesting Validator",
+			"properties": {
+				"htmlNestingLinter.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Activar/desactivar la validación de anidamiento HTML"
+				},
+				"htmlNestingLinter.severity": {
+					"type": "string",
+					"enum": [
+						"error",
+						"warning",
+						"info"
+					],
+					"default": "error",
+					"description": "Nivel de severidad para los diagnósticos"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^25.3.0",
+		"@types/vscode": "^1.109.0",
+		"typescript": "^5.9.3",
+		"vsce": "^1.94.0"
+	},
+	"overrides": {
+		"cheerio": "1.2.0"
+	}
+}
